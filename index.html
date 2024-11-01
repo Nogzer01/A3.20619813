@@ -10,55 +10,147 @@
     
     <section id="header">
         <div class="header_page">
+            <img src="images/header_image.png" class="header_image">
 
-            <!--<img src="images/header_image.png" class="header_image">-->
             <nav>
                 <a href="#gallery">Gallery</a>
                 <img src="images/kawasaki_logo.png" class="kawasaki_logo">
                 <a href="#specs">Specs</a>
             </nav>
 
-            <h1>KAWASAKI<br>650</h1>
-
+            <h1>KAWASAKI<br> NINJA 650</h1>
         </div>
     </section>
 
     <section id="gallery">
         <div class="image_gallery">
-        <div class="gallery_group1">
-            <img class="group_1" src="images/gallery_image1.jpg">
-            <img class="group_1" src="images/gallery_image2.jpg">
-            <img class="group_1" src="images/gallery_image3.jpeg">
-            <img class="group_1" src="images/gallery_image4.jpg">
-        </div>
+            <div class="gallery_group1">
+                <img class="group_1 tran1 lightbox" src="images/img1.png">
+                <img class="group_1 tran3 lightbox" src="images/img2.png">
+                <img class="group_1 tran2 lightbox" src="images/img3.png">
+                <img class="group_1 tran1 lightbox" src="images/img4.png">
+            </div>
 
-        <div class="gallery_group2">
-            <img class="group_2" src="images/gallery_image5.jpg">
-            <img class="group_2" src="images/gallery_image6.jpg">
-            <img class="group_2" src="images/gallery_image7.jpg">
-        </div>
+            <div class="gallery_group2">
+                <img class="group_2 tran2 lightbox" src="images/img5.png">
+                <img class="group_2 tran3 lightbox" src="images/img6.png">
+            </div>
 
-        <div class="gallery_group3">
-            <img class="group_3" src="images/gallery_image8.jpg">
-            <img class="group_3" src="images/gallery_image9.png">
-            <img class="group_3" src="images/gallery_image10.png">
-            <img class="group_3" src="images/gallery_image11.png">
-            <img class="group_3" src="images/gallery_image12.png">
-        </div>
+            <div class="gallery_group3">
+                <img class="group_3 tran3 lightbox" src="images/img7.png">
+                <img class="group_3 tran3 lightbox" src="images/img8.png">
+                <img class="group_3 tran1 lightbox" src="images/img9.png">
+                <img class="group_3 tran2 lightbox" src="images/img10.png">
+            </div>
         </div>
     </section>
 
     <section id="specs">
         <div class="specs_bike">
+            <p class="dragme">Drag Me...</p>
+            <div id="on_switchcontainer">
+                <svg class="ignition_button" width="207" height="100" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="dragIndicator" clip-path="url(#clip0_1_4)">
+                    <g id="lightGroup" opacity="0.8">
+                    <path id="light1" d="M35 48.2679C36.3333 49.0378 36.3333 50.9622 35 51.732L9.5 66.4545C8.16666 67.2243 6.5 66.262 6.5 64.7224L6.5 35.2776C6.5 33.738 8.16667 32.7757 9.5 33.5455L35 48.2679Z" fill="white"/>
+                    </g>
+                    <g id="darkGroup" opacity="0.8">
+                    <path id="dark1" d="M49 48.2679C50.3333 49.0378 50.3333 50.9622 49 51.732L23.5 66.4545C22.1667 67.2243 20.5 66.262 20.5 64.7224L20.5 35.2776C20.5 33.738 22.1667 32.7757 23.5 33.5455L49 48.2679Z" fill="#E2E2E2"/>
+                    <path id="dark2" opacity="0.8" d="M35 48.2679C36.3333 49.0378 36.3333 50.9622 35 51.732L9.5 66.4545C8.16666 67.2243 6.5 66.262 6.5 64.7224L6.5 35.2776C6.5 33.738 8.16667 32.7757 9.5 33.5455L35 48.2679Z" fill="#E2E2E2"/>
+                    </g>
+                    </g>
+                    <defs>
+                    <clipPath id="clip0_1_4">
+                    <rect width="120" height="100" fill="white"/>
+                    </clipPath>
+                    </defs>
+                </svg>
+            </div>
+
             <img class="specs_bikeoff" src="images/650_bike_off.png">
             <img class="specs_bikeon" src="images/650_bike_on.png">
+            
+            <sl-icon-button class ="tyres_infoicon" name="info-circle" label=""></sl-icon-button>
+            <sl-icon-button class ="engine_infoicon" name="info-circle" label=""></sl-icon-button>
+            <sl-icon-button class ="body_infoicon" name="info-circle" label=""></sl-icon-button>
+            <sl-icon-button class ="features_infoicon" name="info-circle" label=""></sl-icon-button>
+
+            <div class="tyre">
+                <img class="tyre_image" src="images/tyreimg.png">
+                <div class="tyre_info_back_button">
+                    <sl-icon-button name="x-circle" label="Back" style="font-size: 40px;"></sl-icon-button>
+                </div>
+                <div class="tyre_text">
+                    <p class="tyre_line 1">Front wheel travel: 125mm</p>
+                    <p class="tyre_line 2">Rear wheel travel: 130mm</p>
+                    <p class="tyre_line 3">Steering angle (l/r): 32 Deg / 32 Deg</p>
+                    <p class="tyre_line 4">Front brake: dual 300mm petal disc</p>
+                    <p class="tyre_line 5">Rear brake: 220mm petal disc</p>
+                    <p class="tyre_line 6">Front caliper: dual-piston</p>
+                    <p class="tyre_line 7">Rear caliper: single-piston</p>
+                    <p class="tyre_line 8">Front suspension: 41mm telescopic fork</p>
+                    <p class="tyre_line 9">Rear suspension: horizontal back-link, single shock</p>
+                </div>
+            </div>
+
+            <div class="engine">
+                <img class="engine_image" src="images/engineimg.png">
+                <div class="engine_info_back_button">
+                    <sl-icon-button name="x-circle" label="Back" style="font-size: 40px;"></sl-icon-button>
+                </div>
+                <div class="engine_text">
+                    <p class="engine_line 1">Engine: 4-Stroke Parallel twin</p>
+                    <p class="engine_line 2">Displacement: 649cc</p>
+                    <p class="engine_line 3">Transmission: 6-speed manual</p>
+                    <p class="engine_line 4">Maximum power: 37.8kw / 8000 rpm</p>
+                    <p class="engine_line 5">Maximum torque: 57.0 nm / 4800 rpm</p>
+                    <p class="engine_line 6">Fuel system: 2 dual throttle valves</p>
+                    <p class="engine_line 7">Ignition: digital</p>
+                    <p class="engine_line 8">Cooling: electric</p>
+                    <p class="engine_line 9">Clutch: wet-multi disc, manual</p>
+                    <p class="engine_line 10">Final drive: chain</p>
+                </div>
+            </div>
+
+            <div class="body">
+                <img class="body_image" src="images/bodyimg.png">
+                <div class="body_info_back_button">
+                    <sl-icon-button name="x-circle" label="Back" style="font-size: 40px;"></sl-icon-button>
+                </div>
+                <div class="body_text">
+                    <p class="body_line 1">Dimensions: 2055 x 740 x 1145mm</p>
+                    <p class="body_line 2">Wheelbase: 1410mm</p>
+                    <p class="body_line 3">Road clearance: 130mm</p>
+                    <p class="body_line 4">Seat height: 790mm</p>
+                    <p class="body_line 5">Curb weight: 192kg</p>
+                    <p class="body_line 6">Fuel Capacity: 15 litres</p>
+                    <p class="body_line 7">Frame: trellis, high-tensile steel</p>
+                </div>
+            </div>
+
+            <div class="features">
+                <img class="features_image" src="images/featuresimg.png">
+                <div class="features_info_back_button">
+                    <sl-icon-button name="x-circle" label="Back" style="font-size: 40px;"></sl-icon-button>
+                </div>
+                <div class="features_text">
+                    <p class="features_line 1">Assist & slipper clutch</p>
+                    <p class="features_line 2">Dual throttle valves</p>
+                    <p class="features_line 3">Economical riding indicator</p>
+                    <p class="features_line 4">Kawasaki traction control</p>
+                    <p class="features_line 5">Smartphone connectivity</p>
+                    <p class="features_line 6">Anti-lock brake system</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <footer>
-
-    </footer>
-
-    <script src="main.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.18.0/cdn/themes/light.css" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.18.0/cdn/shoelace-autoloader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Draggable.min.js"></script>
+    
+    <script defer src="main.js"></script>
 </body>
 </html>

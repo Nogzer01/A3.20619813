@@ -2,11 +2,6 @@ section {
     height: 100vh;
 }
 
-footer {
-    height: 20vh;
-    background-color: rgb(232, 232, 232);
-}
-
 body {
     margin: 0px;
     background-color: black;
@@ -15,7 +10,7 @@ body {
 nav {
     position: absolute;
     top: 15px;
-    left: 32%;
+    left: 39%;
 }
 
 a {
@@ -44,46 +39,64 @@ a:hover {
     border-style: none;
     width: 100%;
     height: 100vh;
+    object-fit: cover;
+    object-position: right;
 }
 
 h1 {
     position: absolute; 
     color: rgb(228, 47, 47);
     font-family: Helvetica;
-    font-size: 100px;
+    font-size: 170px;
     margin: 0px;
-    top: 60%;
-    left: 10px;
-}
-
-#gallery {
-    width: 100%;
-    height: 80vh;
+    top: 55%;
+    left: 20px;
 }
 
 .group_1 {
     border-style: solid;
     border-width: 2px;
     border-color: rgb(189, 50, 50);
-    height: 216px;
-    margin: 3px;
-    margin-top: 14px;
+    height: 256px;
+    margin: 5px;
+    margin-top: 38px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.group_1:hover {
+    transform: scale(1.05);
+    transition: 1s;
 }
 
 .group_2 {
     border-style: solid;
     border-width: 2px;
     border-color: rgb(189, 50, 50);
-    height: 160px;
-    margin: 3px;
+    height: 250px;
+    margin: 5px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.group_2:hover {
+    transform: scale(1.05);
+    transition: 1s;
 }
 
 .group_3 {
     border-style: solid;
     border-width: 2px;
     border-color: rgb(189, 50, 50);
-    height: 169px;
-    margin: 3px;
+    height: 280px;
+    margin: 5px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.group_3:hover {
+    transform: scale(1.05);
+    transition: 1s;
 }
 
 .gallery_group1 {
@@ -92,29 +105,1409 @@ h1 {
 }
 
 .gallery_group2 {
-    margin-top: 5px;
     text-align: center;
     width: 100%;
 }
 
 .gallery_group3 {
-    margin-top: 5px;
     text-align: center;
     width: 100%;
 }
 
-.specs_bikeoff {
+#lightBoxBackground {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
+    display: none;
+}
+
+#lightBoxBackground.active {
+    display: grid;
+    place-items: center;
+}
+
+#lightBoxImage {
+    max-width: 800px;
+    max-height: 800px;
+    border: 4px solid rgb(189, 50, 50);
+    box-shadow: 1px 3px 20px rgba(0,0,00.5);
+}
+
+#specs {
+    position: relative;
+}
+
+.dragme {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    font-family: Helvetica;
+    font-weight: bolder;
     position: absolute;
-    display: block;
+    right: 400px;
+    left: 230px;
+    top: 100px;
+    bottom: 520px;
+    margin-bottom: auto;
+    visibility: visible;
+    opacity: 0;
+    animation-name: slideRight;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes slideRight{
+    to{transform: translateX(160px);}
+    50%{opacity: 0.5;}
+}
+
+#on_switchcontainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: visible;
+    position: absolute;
+    right: 835px;
+    left: 835px;
+    top: 280px;
+    bottom: 590px;
+    margin-bottom: auto;
+    background-color: rgb(31, 31, 31);
+    border-radius: 20px 20px 20px 20px;
+
+    transition: opacity 2s;
+}
+
+sl-button.ignition_button {
+    right: 90px;
+}
+
+sl-button.ignition_button::part(base) {
+    --sl-input-height-medium: 48px;
+    --sl-input-border-width: 2px;
+
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(194, 194, 194);
+    color: black;
+    font-family: Helvetica;
+    font-weight: bolder;
+    transition: var(--sl-transition-medium) transform ease, var(--sl-transition-medium) border ease;
+}
+
+sl-button.ignition_button::part(base):hover {
+    transform: scale(1.1);
+}
+
+:root {
+    --dark-color: rgb(179, 179, 179);
+    --light-color: rgb(255, 255, 255);
+}
+
+svg {
+    margin-right: 60px;
+}
+
+#darkGroup {
+    fill: var(--dark-color);
+}
+
+#lightGroup {
+    fill: var(--light-color);
+}
+
+#dark1, #light1, #dark2 {
+    transition: all 1s ease;
+}
+
+#dark2 {
+    transform: translateX(-100%);
+}
+
+svg:hover #light1 {
+    transform: translateX(20%);
+}
+
+svg:hover #dark1 {
+    transform: translateX(40%);
+    opacity: 0;
+}
+
+svg:hover #dark2 {
+    transform: translateX(0%);
+}
+
+.specs_bike {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin-bottom: auto;
+    /*background-color: rgb(0, 136, 255);*/
+}
+
+.specs_bikeoff {
+    visibility: visible;
+    position: absolute;
     margin-right: auto;
     margin-left: auto;
-    width: 40%;
+    margin-top: 80px;
+    width: 30%;
 }
 
 .specs_bikeon {
+    visibility: hidden;
     position: absolute;
-    display: block;
     margin-right: auto;
     margin-left: auto;
+    margin-top: 80px;
+    width: 30%;
+
+    opacity: 0;
+    transition: opacity 2s;
+}
+
+.tyres_infoicon {
+    color: rgb(255, 255, 255);
+    visibility: hidden;
+    position: absolute;
+    margin-right: 540px;
+    margin-left: auto;
+    margin-top: 200px;
+    font-size: 40px;
+
+    opacity: 0;
+    transition: opacity 2s;
+}
+
+.engine_infoicon {
+    color: rgb(255, 255, 255);
+    visibility: hidden;
+    position: absolute;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 145px;
+    font-size: 40px;
+
+    opacity: 0;
+    transition: opacity 2s;
+}
+
+.body_infoicon {
+    color: rgb(255, 255, 255);
+    visibility: hidden;
+    position: absolute;
+    margin-right: auto;
+    margin-left: 170px;
+    margin-top: auto;
+    margin-bottom: 40px;
+    font-size: 40px;
+
+    opacity: 0;
+    transition: opacity 2s;
+}
+
+.features_infoicon {
+    color: rgb(255, 255, 255);
+    visibility: hidden;
+    position: absolute;
+    margin-right: 380px;
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: 220px;
+    font-size: 40px;
+
+    opacity: 0;
+    transition: opacity 2s;
+}
+
+.tyre {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 2s;
+}
+
+.tyre_image {
+    position: relative;
+    width: 30%;
+    height: 30%;
+    margin-left: 100px;
+    margin-top: 100px;
+    border: 4px solid rgb(189, 50, 50);
+}
+
+.tyre_text {
+    position: relative;
     width: 40%;
+    float: right;
+    margin-bottom: 40px;
+}
+
+.tyre_line {
+    font-size: 25px;
+    color: white;
+    font-family: Helvetica;
+    margin-top: 50px;
+}
+
+.tyre_info_back_button {
+    position: absolute;
+    bottom: 17%;
+    left: 29%;
+    color: rgb(255, 255, 255);
+}
+
+.tyre_info_back_button:hover {
+    transform: scale(1.1);
+    transition: 1s;
+}
+
+.body {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 2s;
+}
+
+.body_image {
+    position: relative;
+    width: 40%;
+    height: 40%;
+    margin-left: 100px;
+    margin-top: 0px;
+    margin-right: 0px;
+    border: 4px solid rgb(189, 50, 50);
+}
+
+.body_text {
+    position: relative;
+    width: 40%;
+    float: right;
+    margin-bottom: 40px;
+}
+
+.body_line {
+    font-size: 25px;
+    color: white;
+    font-family: Helvetica;
+    margin-top: 50px;
+}
+
+.body_info_back_button {
+    position: absolute;
+    bottom: 4%;
+    left: 25%;
+    color: rgb(255, 255, 255);
+}
+
+.body_info_back_button:hover {
+    transform: scale(1.1);
+    transition: 1s;
+}
+
+.engine {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 2s;
+}
+
+.engine_image {
+    position: relative;
+    width: 40%;
+    height: 40%;
+    margin-left: 100px;
+    margin-top: 100px;
+    margin-right: 0px;
+    border: 4px solid rgb(189, 50, 50);
+}
+
+.engine_text {
+    position: relative;
+    width: 40%;
+    float: right;
+    margin-bottom: 40px;
+}
+
+.engine_line {
+    font-size: 25px;
+    color: white;
+    font-family: Helvetica;
+    margin-top: 50px;
+}
+
+.engine_info_back_button {
+    position: absolute;
+    bottom: 20%;
+    left: 25%;
+    color: rgb(255, 255, 255);
+}
+
+.engine_info_back_button:hover {
+    transform: scale(1.1);
+    transition: 1s;
+}
+
+.features {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 2s;
+}
+
+.features_image {
+    position: relative;
+    width: 40%;
+    height: 40%;
+    margin-left: 100px;
+    margin-top: 30px;
+    margin-right: 0px;
+    border: 4px solid rgb(189, 50, 50);
+}
+
+.features_text {
+    position: relative;
+    width: 40%;
+    float: right;
+    margin-bottom: 40px;
+}
+
+.features_line {
+    font-size: 25px;
+    color: white;
+    font-family: Helvetica;
+    margin-top: 50px;
+}
+
+.features_info_back_button {
+    position: absolute;
+    bottom: 6%;
+    left: 25%;
+    color: rgb(255, 255, 255);
+}
+
+.features_info_back_button:hover {
+    transform: scale(1.1);
+    transition: 1s;
+}
+
+@media only screen and (max-width: 1024px) {
+    section {
+        height: 100vh;
+    }
+
+    body {
+        margin: 0px;
+        background-color: black;
+    }
+
+    nav {
+        position: absolute;
+        top: 15px;
+        left: 32%;
+    }
+
+    a {
+        color: rgb(228, 47, 47);
+        font-size: 30px;
+        font-family: Helvetica;
+        font-weight: bolder;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: rgb(59, 133, 66);
+    }
+
+    .kawasaki_logo {
+        margin-left: 20px;
+        margin-right: 20px;
+        width: 125px;
+        height: 100%;
+        border-style: none;
+    }
+
+    .header_image {
+        position: absolute;
+        margin: 0px;
+        border-style: none;
+        width: 100%;
+        height: 100vh;
+        object-fit: cover;
+        object-position: right;
+    }
+
+    h1 {
+        position: absolute; 
+        color: rgb(228, 47, 47);
+        font-family: Helvetica;
+        font-size: 100px;
+        margin: 0px;
+        top: 60%;
+        left: 10px;
+    }
+
+    .group_1 {
+        border-style: solid;
+        border-width: 2px;
+        border-color: rgb(189, 50, 50);
+        height: 210px;
+        margin: 3px;
+        margin-top: 40px;
+        opacity: 0;
+    }
+
+    /*.group_1:hover {
+        transform: scale(1.05);
+        transition: 1s;
+    }*/
+
+    .group_2 {
+        border-style: solid;
+        border-width: 2px;
+        border-color: rgb(189, 50, 50);
+        height: 210px;
+        margin: 3px;
+        opacity: 0;
+    }
+
+    /*.group_2:hover {
+        transform: scale(1.05);
+        transition: 1s;
+    }*/
+
+    .group_3 {
+        border-style: solid;
+        border-width: 2px;
+        border-color: rgb(189, 50, 50);
+        height: 230px;
+        margin: 3px;
+        opacity: 0;
+    }
+
+    /*.group_3:hover {
+        transform: scale(1.05);
+        transition: 1s;
+    }*/
+
+    .gallery_group1 {
+        text-align: center;
+        width: 100%;
+    }
+
+    .gallery_group2 {
+        text-align: center;
+        width: 100%;
+    }
+
+    .gallery_group3 {
+        text-align: center;
+        width: 100%;
+    }
+
+    #lightBoxBackground {
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(2px);
+        display: none;
+    }
+    
+    #lightBoxBackground.active {
+        display: grid;
+        place-items: center;
+    }
+    
+    #lightBoxImage {
+        max-width: 600px;
+        max-height: 600px;
+        border: 4px solid rgb(189, 50, 50);
+        box-shadow: 1px 3px 20px rgba(0,0,00.5);
+    }
+
+    #specs {
+        position: relative;
+    }
+
+    .dragme {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: white;
+        font-family: Helvetica;
+        font-weight: bolder;
+        position: absolute;
+        right: 400px;
+        left: 230px;
+        top: 100px;
+        bottom: 520px;
+        margin-bottom: auto;
+        visibility: visible;
+        opacity: 0;
+        animation-name: slideRight;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+    }
+
+    @keyframes slideRight{
+        to{transform: translateX(160px);}
+        50%{opacity: 0.5;}
+    }
+
+    #on_switchcontainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        visibility: visible;
+        position: absolute;
+        right: 400px;
+        left: 400px;
+        top: 200px;
+        bottom: 520px;
+        margin-bottom: auto;
+        background-color: rgb(31, 31, 31);
+        border-radius: 20px 20px 20px 20px;
+    }
+
+    sl-button.ignition_button {
+        right: 90px;
+    }
+
+    sl-button.ignition_button::part(base) {
+        --sl-input-height-medium: 48px;
+        --sl-input-border-width: 2px;
+
+        background-color: rgb(255, 255, 255);
+        border-color: rgb(194, 194, 194);
+        color: black;
+        font-family: Helvetica;
+        font-size: 20px;
+        font-weight: bolder;
+        transition: var(--sl-transition-medium) transform ease, var(--sl-transition-medium) border ease;
+    }
+
+    sl-button.ignition_button::part(base):hover {
+        transform: scale(1.1);
+    }
+
+    :root {
+        --dark-color: rgb(179, 179, 179);
+        --light-color: rgb(255, 255, 255);
+    }
+    
+    svg {
+        margin-right: 35px;
+    }
+    
+    #darkGroup {
+        fill: var(--dark-color);
+    }
+    
+    #lightGroup {
+        fill: var(--light-color);
+    }
+    
+    #dark1, #light1, #dark2 {
+        transition: all 1s ease;
+    }
+    
+    #dark2 {
+        transform: translateX(-100%);
+    }
+    
+    svg:hover #light1 {
+        transform: translateX(20%);
+    }
+    
+    svg:hover #dark1 {
+        transform: translateX(40%);
+        opacity: 0;
+    }
+    
+    svg:hover #dark2 {
+        transform: translateX(0%);
+    }
+
+    .specs_bike {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        position: absolute;
+        right: 0;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        margin-bottom: auto;
+        /*background-color: rgb(0, 136, 255);*/
+    }
+
+    .specs_bikeoff {
+        visibility: visible;
+        position: absolute;
+        margin-right: auto;
+        margin-left: auto;
+        width: 35%;
+    }
+
+    .specs_bikeon {
+        visibility: hidden;
+        position: absolute;
+        margin-right: auto;
+        margin-left: auto;
+        width: 35%;
+
+        opacity: 0;
+        transition: opacity 2s;
+    }
+
+    .tyres_infoicon {
+        color: rgb(255, 255, 255);
+        visibility: hidden;
+        position: absolute;
+        margin-right: 340px;
+        margin-left: auto;
+        margin-top: 170px;
+        font-size: 30px;
+
+        opacity: 0;
+        transition: opacity 2s;
+    }
+
+    .engine_infoicon {
+        color: rgb(255, 255, 255);
+        visibility: hidden;
+        position: absolute;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 130px;
+        font-size: 30px;
+
+        opacity: 0;
+        transition: opacity 2s;
+    }
+
+    .body_infoicon {
+        color: rgb(255, 255, 255);
+        visibility: hidden;
+        position: absolute;
+        margin-right: auto;
+        margin-left: 100px;
+        margin-top: auto;
+        margin-bottom: 0px;
+        font-size: 30px;
+
+        opacity: 0;
+        transition: opacity 2s;
+    }
+
+    .features_infoicon {
+        color: rgb(255, 255, 255);
+        visibility: hidden;
+        position: absolute;
+        margin-right: 230px;
+        margin-left: auto;
+        margin-top: auto;
+        margin-bottom: 100px;
+        font-size: 30px;
+
+        opacity: 0;
+        transition: opacity 2s;
+    }
+
+    .tyre {
+        position: absolute;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 2s;
+    }
+    
+    .tyre_image {
+        position: relative;
+        width: 25%;
+        height: 25%;
+        margin-left: 200px;
+        margin-top: 50px;
+        border: 4px solid rgb(189, 50, 50);
+    }
+    
+    .tyre_text {
+        position: relative;
+        width: 30%;
+        float: middle;
+        margin-bottom: 40px;
+        margin-right: 100px;
+    }
+    
+    .tyre_line {
+        font-size: 20px;
+        color: white;
+        font-family: Helvetica;
+        margin-top: 0px;
+    }
+    
+    .tyre_info_back_button {
+        position: absolute;
+        bottom: 17%;
+        left: 30%;
+        color: rgb(255, 255, 255);
+    }
+    
+    .tyre_info_back_button:hover {
+        transform: scale(1.1);
+        transition: 1s;
+    }
+    
+    .body {
+        position: absolute;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 2s;
+    }
+    
+    .body_image {
+        position: relative;
+        width: 35%;
+        height: 35%;
+        margin-left: 150px;
+        margin-top: 130px;
+        margin-right: 0px;
+        border: 4px solid rgb(189, 50, 50);
+    }
+    
+    .body_text {
+        position: relative;
+        width: 30%;
+        float: right;
+        margin-bottom: 40px;
+        margin-right: 120px;
+    }
+    
+    .body_line {
+        font-size: 20px;
+        color: white;
+        font-family: Helvetica;
+        margin-top: 50px;
+    }
+    
+    .body_info_back_button {
+        position: absolute;
+        bottom: 20%;
+        left: 30%;
+        color: rgb(255, 255, 255);
+    }
+    
+    .body_info_back_button:hover {
+        transform: scale(1.1);
+        transition: 1s;
+    }
+    
+    .engine {
+        position: absolute;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 2s;
+    }
+    
+    .engine_image {
+        position: relative;
+        width: 35%;
+        height: 35%;
+        margin-left: 140px;
+        margin-top: 100px;
+        margin-right: 0px;
+        border: 4px solid rgb(189, 50, 50);
+    }
+    
+    .engine_text {
+        position: relative;
+        width: 30%;
+        float: right;
+        margin-bottom: 40px;
+        margin-right: 150px;
+    }
+    
+    .engine_line {
+        font-size: 20px;
+        color: white;
+        font-family: Helvetica;
+        margin-top: 0px;
+    }
+    
+    .engine_info_back_button {
+        position: absolute;
+        bottom: 22%;
+        left: 29%;
+        color: rgb(255, 255, 255);
+    }
+    
+    .engine_info_back_button:hover {
+        transform: scale(1.1);
+        transition: 1s;
+    }
+    
+    .features {
+        position: absolute;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 2s;
+    }
+    
+    .features_image {
+        position: relative;
+        width: 40%;
+        height: 40%;
+        margin-left: 100px;
+        margin-top: 120px;
+        margin-right: 0px;
+        border: 4px solid rgb(189, 50, 50);
+    }
+    
+    .features_text {
+        position: relative;
+        width: 40%;
+        float: right;
+        margin-bottom: 40px;
+    }
+    
+    .features_line {
+        font-size: 25px;
+        color: white;
+        font-family: Helvetica;
+        margin-top: 50px;
+    }
+    
+    .features_info_back_button {
+        position: absolute;
+        bottom: 16%;
+        left: 28%;
+        color: rgb(255, 255, 255);
+    }
+    
+    .features_info_back_button:hover {
+        transform: scale(1.1);
+        transition: 1s;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    section {
+        height: 100vh;
+    }
+    
+    body {
+        margin: 0px;
+        background-color: black;
+    }
+    
+    nav {
+        position: absolute;
+        top: 15px;
+        left: 32%;
+    }
+    
+    a {
+        color: rgb(228, 47, 47);
+        font-size: 22px;
+        font-family: Helvetica;
+        font-weight: bolder;
+        text-decoration: none;
+    }
+    
+    a:hover {
+        color: rgb(59, 133, 66);
+    }
+    
+    .kawasaki_logo {
+        margin-left: 20px;
+        margin-right: 20px;
+        width: 100px;
+        height: 100%;
+        border-style: none;
+    }
+    
+    .header_image {
+        position: absolute;
+        margin: 0px;
+        border-style: none;
+        width: 100%;
+        height: 100vh;
+        object-fit: cover;
+        object-position: 85%;
+    }
+    
+    h1 {
+        position: absolute; 
+        color: rgb(228, 47, 47);
+        font-family: Helvetica;
+        font-size: 100px;
+        margin: 0px;
+        top: 65%;
+        left: 20px;
+    }
+    
+    .group_1 {
+        border-style: solid;
+        border-width: 2px;
+        border-color: rgb(189, 50, 50);
+        height: 150px;
+        margin: 5px;
+        margin-top: 17vh;
+        opacity: 0;
+        cursor: pointer;
+    }
+    
+    .group_1:hover {
+        transform: scale(1.05);
+        transition: 1s;
+    }
+    
+    .group_2 {
+        border-style: solid;
+        border-width: 2px;
+        border-color: rgb(189, 50, 50);
+        height: 150px;
+        margin: 5px;
+        opacity: 0;
+        cursor: pointer;
+    }
+    
+    .group_2:hover {
+        transform: scale(1.05);
+        transition: 1s;
+    }
+    
+    .group_3 {
+        border-style: solid;
+        border-width: 2px;
+        border-color: rgb(189, 50, 50);
+        height: 150px;
+        margin: 5px;
+        opacity: 0;
+        cursor: pointer;
+    }
+    
+    .group_3:hover {
+        transform: scale(1.05);
+        transition: 1s;
+    }
+    
+    .gallery_group1 {
+        text-align: center;
+        width: 100%;
+    }
+    
+    .gallery_group2 {
+        text-align: center;
+        width: 100%;
+    }
+    
+    .gallery_group3 {
+        text-align: center;
+        width: 100%;
+    }
+    
+    #lightBoxBackground {
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(2px);
+        display: none;
+    }
+    
+    #lightBoxBackground.active {
+        display: grid;
+        place-items: center;
+    }
+    
+    #lightBoxImage {
+        max-width: 500px;
+        max-height: 500px;
+        border: 4px solid rgb(189, 50, 50);
+        box-shadow: 1px 3px 20px rgba(0,0,00.5);
+    }
+    
+    #specs {
+        position: relative;
+    }
+    
+    .dragme {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    
+        color: white;
+        font-family: Helvetica;
+        font-weight: bolder;
+        position: absolute;
+        right: 400px;
+        left: 230px;
+        top: 100px;
+        bottom: 520px;
+        margin-bottom: auto;
+        visibility: visible;
+        opacity: 0;
+        animation-name: slideRight;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+    }
+    
+    @keyframes slideRight{
+        to{transform: translateX(160px);}
+        50%{opacity: 0.5;}
+    }
+    
+    #on_switchcontainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        visibility: visible;
+        position: absolute;
+        right: 260px;
+        left: 260px;
+        top: 200px;
+        bottom: 520px;
+        margin-bottom: auto;
+        background-color: rgb(31, 31, 31);
+        border-radius: 20px 20px 20px 20px;
+    }
+    
+    sl-button.ignition_button {
+        right: 0px;
+    }
+    
+    sl-button.ignition_button::part(base) {
+        --sl-input-height-medium: 48px;
+        --sl-input-border-width: 2px;
+    
+        background-color: rgb(255, 255, 255);
+        border-color: rgb(194, 194, 194);
+        color: black;
+        font-family: Helvetica;
+        font-weight: bolder;
+        transition: var(--sl-transition-medium) transform ease, var(--sl-transition-medium) border ease;
+    }
+    
+    sl-button.ignition_button::part(base):hover {
+        transform: scale(1.1);
+    }
+    
+    :root {
+        --dark-color: rgb(179, 179, 179);
+        --light-color: rgb(255, 255, 255);
+    }
+    
+    svg {
+        margin-right: 60px;
+    }
+    
+    #darkGroup {
+        fill: var(--dark-color);
+    }
+    
+    #lightGroup {
+        fill: var(--light-color);
+    }
+    
+    #dark1, #light1, #dark2 {
+        transition: all 1s ease;
+    }
+    
+    #dark2 {
+        transform: translateX(-100%);
+    }
+    
+    svg:hover #light1 {
+        transform: translateX(20%);
+    }
+    
+    svg:hover #dark1 {
+        transform: translateX(40%);
+        opacity: 0;
+    }
+    
+    svg:hover #dark2 {
+        transform: translateX(0%);
+    }
+    
+    .specs_bike {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    
+        position: absolute;
+        right: 0;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        margin-bottom: auto;
+        /*background-color: rgb(0, 136, 255);*/
+    }
+    
+    .specs_bikeoff {
+        visibility: visible;
+        position: absolute;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 0px;
+        width: 40%;
+    }
+    
+    .specs_bikeon {
+        visibility: hidden;
+        position: absolute;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 0px;
+        width: 40%;
+    
+        opacity: 0;
+        transition: opacity 2s;
+    }
+    
+    .tyres_infoicon {
+        color: rgb(255, 255, 255);
+        visibility: hidden;
+        position: absolute;
+        margin-right: 335px;
+        margin-left: 50px;
+        margin-top: 80px;
+        font-size: 35px;
+    
+        opacity: 0;
+        transition: opacity 2s;
+    }
+    
+    .engine_infoicon {
+        color: rgb(255, 255, 255);
+        visibility: hidden;
+        position: absolute;
+        margin-right: 0px;
+        margin-left: auto;
+        margin-top: 40px;
+        font-size: 35px;
+    
+        opacity: 0;
+        transition: opacity 2s;
+    }
+    
+    .body_infoicon {
+        color: rgb(255, 255, 255);
+        visibility: hidden;
+        position: absolute;
+        margin-right: auto;
+        margin-left: 90px;
+        margin-top: auto;
+        margin-bottom: 50px;
+        font-size: 35px;
+    
+        opacity: 0;
+        transition: opacity 2s;
+    }
+    
+    .features_infoicon {
+        color: rgb(255, 255, 255);
+        visibility: hidden;
+        position: absolute;
+        margin-right: 200px;
+        margin-left: auto;
+        margin-top: auto;
+        margin-bottom: 150px;
+        font-size: 35px;
+    
+        opacity: 0;
+        transition: opacity 2s;
+    }
+
+    .tyre {
+        position: absolute;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 2s;
+    }
+    
+    .tyre_image {
+        position: relative;
+        width: 25%;
+        height: 25%;
+        margin-left: 150px;
+        margin-top: 70px;
+        border: 4px solid rgb(189, 50, 50);
+    }
+    
+    .tyre_text {
+        position: relative;
+        width: 30%;
+        float: middle;
+        margin-bottom: 40px;
+        margin-right: 100px;
+    }
+    
+    .tyre_line {
+        font-size: 18px;
+        color: white;
+        font-family: Helvetica;
+        margin-top: 0px;
+    }
+    
+    .tyre_info_back_button {
+        position: absolute;
+        bottom: 20%;
+        left: 29.5%;
+        color: rgb(255, 255, 255);
+    }
+    
+    .tyre_info_back_button:hover {
+        transform: scale(1.1);
+        transition: 1s;
+    }
+    
+    .body {
+        position: absolute;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 2s;
+    }
+    
+    .body_image {
+        position: relative;
+        width: 32%;
+        height: 32%;
+        margin-left: 120px;
+        margin-top: 100px;
+        margin-right: 0px;
+        border: 4px solid rgb(189, 50, 50);
+    }
+    
+    .body_text {
+        position: relative;
+        width: 30%;
+        float: right;
+        margin-bottom: 40px;
+        margin-right: 120px;
+    }
+    
+    .body_line {
+        font-size: 18px;
+        color: white;
+        font-family: Helvetica;
+        margin-top: 30px;
+    }
+    
+    .body_info_back_button {
+        position: absolute;
+        bottom: 23%;
+        left: 29%;
+        color: rgb(255, 255, 255);
+    }
+    
+    .body_info_back_button:hover {
+        transform: scale(1.1);
+        transition: 1s;
+    }
+    
+    .engine {
+        position: absolute;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 2s;
+    }
+    
+    .engine_image {
+        position: relative;
+        width: 35%;
+        height: 35%;
+        margin-left: 100px;
+        margin-top: 150px;
+        margin-right: 0px;
+        border: 4px solid rgb(189, 50, 50);
+    }
+    
+    .engine_text {
+        position: relative;
+        width: 30%;
+        float: right;
+        margin-bottom: 40px;
+        margin-right: 100px;
+        margin-top: 50px;
+    }
+    
+    .engine_line {
+        font-size: 18px;
+        color: white;
+        font-family: Helvetica;
+        margin-top: 0px;
+    }
+    
+    .engine_info_back_button {
+        position: absolute;
+        bottom: 30%;
+        left: 27.5%;
+        color: rgb(255, 255, 255);
+    }
+    
+    .engine_info_back_button:hover {
+        transform: scale(1.1);
+        transition: 1s;
+    }
+    
+    .features {
+        position: absolute;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 2s;
+    }
+    
+    .features_image {
+        position: relative;
+        width: 40%;
+        height: 40%;
+        margin-left: 80px;
+        margin-top: 120px;
+        margin-right: 0px;
+        border: 4px solid rgb(189, 50, 50);
+    }
+    
+    .features_text {
+        position: relative;
+        width: 40%;
+        float: right;
+        margin-bottom: 40px;
+    }
+    
+    .features_line {
+        font-size: 20px;
+        color: white;
+        font-family: Helvetica;
+        margin-top: 50px;
+    }
+    
+    .features_info_back_button {
+        position: absolute;
+        bottom: 20%;
+        left: 27%;
+        color: rgb(255, 255, 255);
+    }
+    
+    .features_info_back_button:hover {
+        transform: scale(1.1);
+        transition: 1s;
+    }
 }
